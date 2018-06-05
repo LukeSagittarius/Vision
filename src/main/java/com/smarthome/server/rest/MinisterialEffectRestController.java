@@ -38,9 +38,10 @@ public class MinisterialEffectRestController {
             @RequestParam(value="name") @NotNull String name,
             @RequestParam(value="profile") @NotNull String profile,
             @RequestParam(value="stage") @NotNull String stage,
-            @RequestParam(value="area") @NotNull String area) {
+            @RequestParam(value="area") @NotNull String area,
+            @RequestParam(value="description") @NotNull String description) {
         try {
-            MinisterialEffectDto dto = createMinisterialEffectDto(code, name, profile, stage, area);
+            MinisterialEffectDto dto = createMinisterialEffectDto(code, name, profile, stage, area, description);
             ministerialEffectMaintenanceService.save(
                     Mappers.getMapper(MinisterialEffectMapper.class).dtoToEntity(dto));
         }
@@ -57,14 +58,15 @@ public class MinisterialEffectRestController {
             @RequestParam(value="name") @NotNull String name,
             @RequestParam(value="profile") @NotNull String profile,
             @RequestParam(value="stage") @NotNull String stage,
-            @RequestParam(value="area") @NotNull String area) {
+            @RequestParam(value="area") @NotNull String area,
+            @RequestParam(value="description") @NotNull String description) {
         try {
             MinisterialEffect ministerialEffect = ministerialEffectMaintenanceService.findById(Long.valueOf(id));
             if(ministerialEffect != null) {
-                MinisterialEffectDto dto = createMinisterialEffectDto(code, name, profile, stage, area);
+                MinisterialEffectDto dto = createMinisterialEffectDto(code, name, profile, stage, area, description);
+                MinisterialEffect entity = Mappers.getMapper(MinisterialEffectMapper.class).dtoToEntity(dto);
                 ministerialEffectMaintenanceService.delete(Long.valueOf(id));
-                ministerialEffectMaintenanceService.save(
-                        Mappers.getMapper(MinisterialEffectMapper.class).dtoToEntity(dto));
+                ministerialEffectMaintenanceService.save(entity);
             }
         }
         catch (Exception e) {
@@ -87,7 +89,8 @@ public class MinisterialEffectRestController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    private MinisterialEffectDto createMinisterialEffectDto(String code, String name, String profile, String stage, String areaName) {
+    private MinisterialEffectDto createMinisterialEffectDto(String code, String name, String profile,
+                                                            String stage, String areaName, String description) {
         MinisterialEffectDto dto = new MinisterialEffectDto();
         dto.setCode(code);
         dto.setName(name);
@@ -100,6 +103,7 @@ public class MinisterialEffectRestController {
         Area area = new Area();
         area.setName(areaName);
         dto.setArea(area);
+        dto.setDescription(description);
         return dto;
     }
 }
