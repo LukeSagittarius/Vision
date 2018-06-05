@@ -16,17 +16,23 @@ import javax.validation.constraints.NotNull;
 
 
 @RestController
-public class RestService {
+@RequestMapping("/ministerialEffect")
+public class MinisterialEffectRestController {
 
     @Autowired
     private MinisterialEffectMaintenanceService ministerialEffectMaintenanceService;
 
-    @RequestMapping("/ministerialEffects")
+    @RequestMapping("/{id}")
+    public MinisterialEffect getMinisterialEffect(@PathVariable("id") Long id){
+        return ministerialEffectMaintenanceService.findById(id);
+    }
+
+    @RequestMapping("/all")
     public Iterable<MinisterialEffect> getMinisterialEffects() {
         return ministerialEffectMaintenanceService.findAll();
     }
 
-    @RequestMapping(value = "/addMinisterialEffect", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity addMinisterialEffect(
             @RequestParam(value="code") @NotNull String code,
             @RequestParam(value="name") @NotNull String name,
@@ -44,7 +50,7 @@ public class RestService {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/editMinisterialEffect", method = RequestMethod.POST)
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public ResponseEntity editMinisterialEffect(
             @RequestParam(value="id") @NotNull String id,
             @RequestParam(value="code") @NotNull String code,
@@ -67,7 +73,7 @@ public class RestService {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/deleteMinisterialEffect", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public ResponseEntity deleteMinisterialEffect(@RequestParam(value="id") @NotNull String id) {
         try {
             MinisterialEffect ministerialEffect = ministerialEffectMaintenanceService.findById(Long.valueOf(id));
