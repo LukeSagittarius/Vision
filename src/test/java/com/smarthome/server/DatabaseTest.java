@@ -19,22 +19,18 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @SpringBootTest()
 public class DatabaseTest {
 
+    private static final String MINISTERIAL_EFFECT_CODE = "ME000001";
+
     @Autowired
     MinisterialEffectMaintenanceService ministerialEffectMaintenanceService;
 
     @Test
     public void shouldPersistAndRetrieveDevices() {
-        MinisterialEffectDto expected = createMinisterialEffectDto();
+        MinisterialEffectDto expected = new MinisterialEffectDto(MINISTERIAL_EFFECT_CODE);
         MinisterialEffect entityToSave = Mappers.getMapper(MinisterialEffectMapper.class).dtoToEntity(expected);
         ministerialEffectMaintenanceService.save(entityToSave);
-        MinisterialEffect foundEntity = ministerialEffectMaintenanceService.findById(1L);
+        MinisterialEffect foundEntity = ministerialEffectMaintenanceService.findByCode(MINISTERIAL_EFFECT_CODE);
         MinisterialEffectDto result = Mappers.getMapper(MinisterialEffectMapper.class).entityToDto(foundEntity);
         assertThat(expected.getCode(), is(result.getCode()));
-    }
-
-    private MinisterialEffectDto createMinisterialEffectDto() {
-        MinisterialEffectDto dto = new MinisterialEffectDto();
-        dto.setCode("CODE");
-        return dto;
     }
 }
