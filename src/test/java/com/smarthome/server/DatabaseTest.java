@@ -1,9 +1,7 @@
 package com.smarthome.server;
 
 import com.smarthome.server.dto.MinisterialEffectDto;
-import com.smarthome.server.entity.Area;
 import com.smarthome.server.entity.MinisterialEffect;
-import com.smarthome.server.entity.Profile;
 import com.smarthome.server.facade.MinisterialEffectMaintenanceService;
 import com.smarthome.server.mapper.MinisterialEffectMapper;
 import org.junit.Test;
@@ -27,10 +25,10 @@ public class DatabaseTest {
     @Test
     public void shouldPersistAndRetrieveDevices() {
         MinisterialEffectDto expected = createMinisterialEffectDto();
-        MinisterialEffect entityToSave = Mappers.getMapper(MinisterialEffectMapper.class).ministerialEffectDtoToMinisterialEffect(expected);
+        MinisterialEffect entityToSave = Mappers.getMapper(MinisterialEffectMapper.class).dtoToEntity(expected);
         ministerialEffectMaintenanceService.save(entityToSave);
         MinisterialEffect foundEntity = ministerialEffectMaintenanceService.findById(1L);
-        MinisterialEffectDto result = Mappers.getMapper(MinisterialEffectMapper.class).ministerialEffectToMinisterialEffectDto(foundEntity);
+        MinisterialEffectDto result = Mappers.getMapper(MinisterialEffectMapper.class).entityToDto(foundEntity);
         assertThat(expected.getCode(), is(result.getCode()));
     }
 

@@ -19,9 +19,6 @@ import javax.validation.constraints.NotNull;
 public class RestService {
 
     @Autowired
-    private RestService restService;
-
-    @Autowired
     private MinisterialEffectMaintenanceService ministerialEffectMaintenanceService;
 
     @RequestMapping("/ministerialEffects")
@@ -39,7 +36,7 @@ public class RestService {
         try {
             MinisterialEffectDto dto = createMinisterialEffectDto(code, name, profile, stage, area);
             ministerialEffectMaintenanceService.save(
-                    Mappers.getMapper(MinisterialEffectMapper.class).ministerialEffectDtoToMinisterialEffect(dto));
+                    Mappers.getMapper(MinisterialEffectMapper.class).dtoToEntity(dto));
         }
         catch (Exception e) {
             return new ResponseEntity(HttpStatus.UNPROCESSABLE_ENTITY);
@@ -61,7 +58,7 @@ public class RestService {
                 MinisterialEffectDto dto = createMinisterialEffectDto(code, name, profile, stage, area);
                 ministerialEffectMaintenanceService.delete(Long.valueOf(id));
                 ministerialEffectMaintenanceService.save(
-                        Mappers.getMapper(MinisterialEffectMapper.class).ministerialEffectDtoToMinisterialEffect(dto));
+                        Mappers.getMapper(MinisterialEffectMapper.class).dtoToEntity(dto));
             }
         }
         catch (Exception e) {
@@ -88,9 +85,9 @@ public class RestService {
         MinisterialEffectDto dto = new MinisterialEffectDto();
         dto.setCode(code);
         dto.setName(name);
-        if(profile.equals("OGÓLNOAKADEMICKI")) {
-            dto.setProfile(Profile.OGÓLNOAKADEMICKI);
-        } else if (profile.equals("PRAKTYCZNY")) {
+        if(profile.equals(Profile.OGOLNOAKADEMICKI)) {
+            dto.setProfile(Profile.OGOLNOAKADEMICKI);
+        } else if (profile.equals(Profile.PRAKTYCZNY)) {
             dto.setProfile(Profile.PRAKTYCZNY);
         }
         dto.setStage(Integer.valueOf(stage));
