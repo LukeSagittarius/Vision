@@ -4,7 +4,7 @@ import com.smarthome.server.dto.MinisterialEffectDto;
 import com.smarthome.server.entity.Area;
 import com.smarthome.server.entity.MinisterialEffect;
 import com.smarthome.server.entity.Profile;
-import com.smarthome.server.facade.MinisterialEffectMaintenanceService;
+import com.smarthome.server.service.MinisterialEffectMaintenanceService;
 import com.smarthome.server.mapper.MinisterialEffectMapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;

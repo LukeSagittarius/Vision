@@ -1,4 +1,4 @@
-package com.smarthome.server.facade;
+package com.smarthome.server.service;
 
 import com.smarthome.server.entity.MinisterialEffect;
 import org.springframework.data.repository.CrudRepository;

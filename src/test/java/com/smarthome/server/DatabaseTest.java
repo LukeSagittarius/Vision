@@ -2,7 +2,7 @@ package com.smarthome.server;
 
 import com.smarthome.server.dto.MinisterialEffectDto;
 import com.smarthome.server.entity.MinisterialEffect;
-import com.smarthome.server.facade.MinisterialEffectMaintenanceService;
+import com.smarthome.server.service.MinisterialEffectMaintenanceService;
 import com.smarthome.server.mapper.MinisterialEffectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
