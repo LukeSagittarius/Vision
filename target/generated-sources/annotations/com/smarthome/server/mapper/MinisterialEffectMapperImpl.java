@@ -5,9 +5,9 @@ import com.smarthome.server.entity.MinisterialEffect;
 import javax.annotation.Generated;
 
 @Generated(
-    value = "org.mapstruct.ap.MappingProcessor",
-    date = "2018-06-05T21:00:13+0200",
-    comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_152-release (JetBrains s.r.o)"
+        value = "org.mapstruct.ap.MappingProcessor",
+        date = "2018-06-05T23:03:15+0200",
+        comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_161 (Oracle Corporation)"
 )
 public class MinisterialEffectMapperImpl implements MinisterialEffectMapper {
 

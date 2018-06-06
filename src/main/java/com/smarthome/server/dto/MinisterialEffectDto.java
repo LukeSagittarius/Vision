@@ -3,6 +3,7 @@ package com.smarthome.server.dto;
 import com.smarthome.server.entity.Area;
 import com.smarthome.server.entity.Profile;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,8 +13,10 @@ public class MinisterialEffectDto {
 
     public MinisterialEffectDto() {}
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    public MinisterialEffectDto(String code) {
+        this.code = code;
+    }
+
     private Long id;
 
     private String code;
@@ -27,6 +30,14 @@ public class MinisterialEffectDto {
     private Area area;
 
     private String description;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getCode() {
         return code;

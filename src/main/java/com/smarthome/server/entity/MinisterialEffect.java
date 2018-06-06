@@ -5,8 +5,6 @@ import javax.persistence.*;
 @Entity
 public class MinisterialEffect {
 
-    public MinisterialEffect() {}
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -23,6 +21,10 @@ public class MinisterialEffect {
     private Area area;
 
     private String description;
+
+    public Long getId() {
+        return id;
+    }
 
     public String getCode() {
         return code;
