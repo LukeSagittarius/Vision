@@ -9,7 +9,7 @@ import { NgForm, AbstractControl } from '@angular/forms';
 })
 
 export class MinisterialEffectsComponent implements OnInit {
-  @ViewChild('ministerialEffectsDeleteForm') currentForm: NgForm;
+  @ViewChild('ministerialEffectDeleteForm') currentForm: NgForm;
 
   ministerialEffects:  MinisterialEffect[];
 

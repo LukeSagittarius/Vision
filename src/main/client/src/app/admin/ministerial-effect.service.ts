@@ -54,15 +54,15 @@ export class MinisterialEffectService {
     });
   }
 
-  delete(ministerialEffectsId: any): void {
+  delete(ministerialEffectId: any): void {
     let headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
     let options = new RequestOptions({
       headers: headers
     });
-    let body = 'id=' + ministerialEffectsId;
-    this.http.post('http://localhost:8080/ministerialEffects/delete', body, options).map((response) => {
+    let body = 'id=' + ministerialEffectId;
+    this.http.post('http://localhost:8080/ministerialEffect/delete', body, options).map((response) => {
     }).subscribe();
   }
 
