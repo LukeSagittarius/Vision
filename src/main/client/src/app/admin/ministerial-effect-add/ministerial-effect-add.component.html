@@ -1,0 +1,67 @@
+<div class="container">
+
+  <form #ministerialEffectAddForm="ngForm" (ngSubmit)="save()" novalidate>
+
+    <div *ngIf="isFieldInvalid('profile') || isFieldInvalid('area') || isFieldInvalid('code') || isFieldInvalid('name') || isFieldInvalid('description') || isFieldInvalid('stage')"
+         class="alert alert-danger">
+      <p *ngIf="isFieldInvalid('profile')">Profile is required.</p>
+      <p *ngIf="isFieldInvalid('area')">Area is required.</p>
+      <p *ngIf="isFieldInvalid('code')">Code is required.</p>
+      <p *ngIf="isFieldInvalid('name')">Name is required.</p>
+      <p *ngIf="isFieldInvalid('description')">Description is required.</p>
+      <p *ngIf="isFieldInvalid('stage')">Stage is required.</p>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="profile">Profil</label>
+        <select id="profile" class="form-control" required [(ngModel)]="ministerialEffect.profile" name="profile">
+          <option selected>Wybierz...</option>
+          <option [value]="1">Ogólnoakademicki</option>
+          <option [value]="1">Akademicki</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="area_id">Obszar</label>
+        <select id="area_id" class="form-control" required [(ngModel)]="ministerialEffect.area_id" name="area_id">
+          <option selected>Wybierz...</option>
+          <option [value]="1">Nauki humanistyczne</option>
+          <option [value]="2">Nauki społeczne</option>
+          <option [value]="3">Nauki ścisłe</option>
+          <option [value]="4">Nauki przyrodnicze</option>
+          <option [value]="5">Nauki techniczne</option>
+          <option [value]="6">Nauki rolnicze, leśne i weterenaryjne</option>
+          <option [value]="7">Nauki medyczne, o zdrowiu i o kulturze fizycznej</option>
+          <option [value]="8">Nauki o sztuce</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputCode">Kod</label>
+        <input type="text" class="form-control" id="inputCode" placeholder="Wpisz kod" required [(ngModel)]="ministerialEffect.code" name="code">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputName">Nazwa</label>
+        <input type="text" class="form-control" id="inputName" placeholder="Wpisz nazwę" required [(ngModel)]="ministerialEffect.name" name="name">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="stage">Poziom</label>
+        <select id="stage" class="form-control" required [(ngModel)]="ministerialEffect.stage" name="stage">
+          <option selected>Wybierz...</option>
+          <option [value]="6">6</option>
+          <option [value]="7">7</option>
+          <option [value]="8">8</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="textareaDescription">Opis</label>
+        <textarea class="form-control" id="textareaDescription" rows="3" placeholder="Wpisz opis" required  [(ngModel)]="ministerialEffect.description" name="description"></textarea>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+    <button class="btn btn-default">Anuluj</button>
+  </form>
+</div>

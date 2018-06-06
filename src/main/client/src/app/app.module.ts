@@ -7,11 +7,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routing';
 import { AdminModule } from './admin/admin.module';
-import { UserGuiModule } from './user-gui/user-gui.module';
-import { UserService } from './admin/user.service';
-import { UserStatusService } from './admin/user-status.service';
-import { DeviceService } from 'app/admin/device.service';
-import { UserStateService } from 'app/admin/user-state.service';
+import { MinisterialEffectService } from './admin/ministerial-effect.service';
 
 @NgModule({
   declarations: [
@@ -22,14 +18,10 @@ import { UserStateService } from 'app/admin/user-state.service';
     FormsModule,
     HttpModule,
     RouterModule.forRoot(APP_ROUTES),
-    AdminModule,
-    UserGuiModule
+    AdminModule
   ],
   providers: [
-    UserService,
-    UserStatusService,
-    DeviceService,
-    UserStateService
+    MinisterialEffectService
   ],
   bootstrap: [AppComponent]
 })
