@@ -3,7 +3,6 @@ package com.smarthome.server.rest;
 import com.smarthome.server.dto.MinisterialEffectDto;
 import com.smarthome.server.entity.Area;
 import com.smarthome.server.entity.MinisterialEffect;
-import com.smarthome.server.entity.Profile;
 import com.smarthome.server.service.MinisterialEffectMaintenanceService;
 import com.smarthome.server.mapper.MinisterialEffectMapper;
 import org.mapstruct.factory.Mappers;
@@ -94,11 +93,7 @@ public class MinisterialEffectRestController {
         MinisterialEffectDto dto = new MinisterialEffectDto();
         dto.setCode(code);
         dto.setName(name);
-        if(profile.equals(Profile.OGOLNOAKADEMICKI)) {
-            dto.setProfile(Profile.OGOLNOAKADEMICKI);
-        } else if (profile.equals(Profile.PRAKTYCZNY)) {
-            dto.setProfile(Profile.PRAKTYCZNY);
-        }
+        dto.setProfile(profile);
         dto.setStage(Integer.valueOf(stage));
         Area area = new Area();
         area.setName(areaName);

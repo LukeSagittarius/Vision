@@ -13,7 +13,7 @@ public class MinisterialEffect {
 
     private String name;
 
-    private Profile profile;
+    private String profile;
 
     private Integer stage;
 
@@ -42,11 +42,11 @@ public class MinisterialEffect {
         this.name = name;
     }
 
-    public Profile getProfile() {
+    public String getProfile() {
         return profile;
     }
 
-    public void setProfile(Profile profile) {
+    public void setProfile(String profile) {
         this.profile = profile;
     }
 

@@ -1,12 +1,6 @@
 package com.smarthome.server.dto;
 
 import com.smarthome.server.entity.Area;
-import com.smarthome.server.entity.Profile;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 
 public class MinisterialEffectDto {
@@ -23,7 +17,7 @@ public class MinisterialEffectDto {
 
     private String name;
 
-    private Profile profile;
+    private String profile;
 
     private Integer stage;
 
@@ -55,11 +49,11 @@ public class MinisterialEffectDto {
         this.name = name;
     }
 
-    public Profile getProfile() {
+    public String getProfile() {
         return profile;
     }
 
-    public void setProfile(Profile profile) {
+    public void setProfile(String profile) {
         this.profile = profile;
     }
 
