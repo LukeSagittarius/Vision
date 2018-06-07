@@ -4,6 +4,7 @@ import {MinisterialEffectAddComponent} from './ministerial-effect-add/ministeria
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {MinisterialEffectEditComponent} from "./ministerial-effect-edit/ministerial-effect-edit.component";
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import {FormsModule} from '@angular/forms';
   declarations:
     [
       MinisterialEffectsComponent,
-      MinisterialEffectAddComponent
+      MinisterialEffectAddComponent,
+      MinisterialEffectEditComponent
     ]
 })
 export class AdminModule {

@@ -14,24 +14,19 @@
         <td class="col">{{ ministerialEffect.name }}</td>
         <td class="col">{{ ministerialEffect.profile }}</td>
         <td class="col">{{ ministerialEffect.stage }}</td>
-        <td class="col">{{ ministerialEffect.area_id }}</td>
+        <td class="col">{{ ministerialEffect.area['name'] }}</td>
         <td class="col">
-          <form>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <a [routerLink]="['#', ministerialEffect.id]"><button type="button" class="btn btn-sm btn-light btn-block">Edytuj</button></a>
-              </div>
-              <div class="form-group col-md-6">
-                <form #ministerialEffectDeleteForm="ngForm" (ngSubmit)="delete()" novalidate>
-                  <input type="hidden" name="id" [(ngModel)]="ministerialEffect.id">
-                  <button type="submit" class="btn btn-sm btn-light btn-block">Usuń</button>
-                </form>
-              </div>
-            </div>
+          <a [routerLink]="['/admin/ministerialEffects/edit', ministerialEffect.id]"><button type="button" class="btn btn-sm btn-light btn-block">Edytuj</button></a>
+          <form #ministerialEffectDeleteForm="ngForm" (ngSubmit)="delete()" novalidate style="margin-top: 10px;">
+            <input type="hidden" name="id" [(ngModel)]="ministerialEffect.id" [value]="ministerialEffect.code">
+            <button type="submit" class="btn btn-sm btn-danger btn-block">Usuń</button>
           </form>
         </td>
       </tr>
     </thead>
 
   </table>
+  <div class="form-group col-md-3">
+    <a [routerLink]="['/admin/ministerialEffects/add']"><button type="button" class="btn btn-sm btn-primary btn-block">Dodaj</button></a>
+  </div>
 </div>

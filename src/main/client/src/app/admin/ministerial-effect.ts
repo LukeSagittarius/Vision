@@ -5,7 +5,7 @@ export class MinisterialEffect {
   private _name: string;
   private _profile: number;
   private _stage: number;
-  private _area_id: number;
+  private _area: number;
   private _description: string;
 
   get id(): number {
@@ -28,8 +28,8 @@ export class MinisterialEffect {
     return this._stage;
   }
 
-  get area_id(): number {
-    return this._area_id;
+  get area(): number {
+    return this._area;
   }
 
   get description(): string {
@@ -56,8 +56,8 @@ export class MinisterialEffect {
     this._stage = value;
   }
 
-  set area_id(value: number) {
-    this._area_id = value;
+  set area(value: number) {
+    this._area = value;
   }
 
   set description(value: string) {

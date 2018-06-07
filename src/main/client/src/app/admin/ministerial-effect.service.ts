@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable, Observer } from 'rxjs';
 import { MinisterialEffect } from './ministerial-effect';
+import {minimalSetImpl} from "rxjs/util/Set";
 
 @Injectable()
 export class MinisterialEffectService {
@@ -24,7 +25,7 @@ export class MinisterialEffectService {
       '&name=' + ministerialEffect.name +
       '&profile=' + ministerialEffect.profile +
       '&stage=' + ministerialEffect.stage +
-      '&area=' + ministerialEffect.area_id +
+      '&area=' + ministerialEffect.area +
       '&description=' + ministerialEffect.description;
 
     this.http.post('http://localhost:8080/ministerialEffect/add', body, options).map((response) => {
@@ -63,6 +64,39 @@ export class MinisterialEffectService {
     });
     let body = 'id=' + ministerialEffectId;
     this.http.post('http://localhost:8080/ministerialEffect/delete', body, options).map((response) => {
+    }).subscribe();
+  }
+
+  findOne(id: number): MinisterialEffect {
+    const ministerialEffect = this.findById(id);
+    if (ministerialEffect) {
+      return Object.assign({}, ministerialEffect);
+    }
+  }
+
+  private findById(id: number): MinisterialEffect {
+    for (const ministerialEffect of this.ministerialEffects) {
+      if (ministerialEffect.id === id) {
+        return ministerialEffect;
+      }
+    }
+  }
+
+  edit(ministerialEffect: MinisterialEffect): void {
+    let headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    let options = new RequestOptions({
+      headers: headers
+    });
+    let body = 'id=' + ministerialEffect.id +
+      '&code=' + ministerialEffect.code +
+      '&name=' + ministerialEffect.name +
+      '&profile=' + ministerialEffect.profile +
+      '&stage=' + ministerialEffect.stage +
+      '&area=' + ministerialEffect.area +
+      '&description=' + ministerialEffect.description;
+    this.http.post('http://localhost:8080/ministerialEffect/edit', body, options).map((response) => {
     }).subscribe();
   }
 

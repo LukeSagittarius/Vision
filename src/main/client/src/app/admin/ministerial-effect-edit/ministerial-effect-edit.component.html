@@ -1,6 +1,6 @@
 <div class="container">
 
-  <form #ministerialEffectAddForm="ngForm" (ngSubmit)="save()" novalidate>
+  <form #ministerialEffectEditForm="ngForm" (ngSubmit)="save()" novalidate>
 
     <div *ngIf="isFieldInvalid('profile') || isFieldInvalid('area') || isFieldInvalid('code') || isFieldInvalid('name') || isFieldInvalid('description') || isFieldInvalid('stage')"
          class="alert alert-danger">
