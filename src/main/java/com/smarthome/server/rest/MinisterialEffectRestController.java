@@ -42,7 +42,7 @@ public class MinisterialEffectRestController {
         try {
             MinisterialEffectDto dto = createMinisterialEffectDto(code, name, profile, stage, area, description);
             ministerialEffectMaintenanceService.save(
-                    Mappers.getMapper(MinisterialEffectMapper.class).dtoToEntity(dto));
+                    Mappers.getMapper(MinisterialEffectMapper.class).toEntity(dto));
         }
         catch (Exception e) {
             return new ResponseEntity(HttpStatus.UNPROCESSABLE_ENTITY);
@@ -63,7 +63,7 @@ public class MinisterialEffectRestController {
             MinisterialEffect ministerialEffect = ministerialEffectMaintenanceService.findById(Long.valueOf(id));
             if(ministerialEffect != null) {
                 MinisterialEffectDto dto = createMinisterialEffectDto(code, name, profile, stage, area, description);
-                MinisterialEffect entity = Mappers.getMapper(MinisterialEffectMapper.class).dtoToEntity(dto);
+                MinisterialEffect entity = Mappers.getMapper(MinisterialEffectMapper.class).toEntity(dto);
                 ministerialEffectMaintenanceService.delete(Long.valueOf(id));
                 ministerialEffectMaintenanceService.save(entity);
             }

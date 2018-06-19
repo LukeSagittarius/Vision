@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface MinisterialEffectMapper {
 
-    MinisterialEffectDto entityToDto(MinisterialEffect ministerialEffect);
+    MinisterialEffectDto toDto(MinisterialEffect ministerialEffect);
 
-    MinisterialEffect dtoToEntity(MinisterialEffectDto ministerialEffectDto);
+    MinisterialEffect toEntity(MinisterialEffectDto ministerialEffectDto);
 }

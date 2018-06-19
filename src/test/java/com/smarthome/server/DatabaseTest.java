@@ -27,10 +27,10 @@ public class DatabaseTest {
     @Test
     public void shouldPersistAndRetrieveDevices() {
         MinisterialEffectDto expected = new MinisterialEffectDto(MINISTERIAL_EFFECT_CODE);
-        MinisterialEffect entityToSave = Mappers.getMapper(MinisterialEffectMapper.class).dtoToEntity(expected);
+        MinisterialEffect entityToSave = Mappers.getMapper(MinisterialEffectMapper.class).toEntity(expected);
         ministerialEffectMaintenanceService.save(entityToSave);
         MinisterialEffect foundEntity = ministerialEffectMaintenanceService.findByCode(MINISTERIAL_EFFECT_CODE);
-        MinisterialEffectDto result = Mappers.getMapper(MinisterialEffectMapper.class).entityToDto(foundEntity);
+        MinisterialEffectDto result = Mappers.getMapper(MinisterialEffectMapper.class).toDto(foundEntity);
         assertThat(expected.getCode(), is(result.getCode()));
     }
 }
