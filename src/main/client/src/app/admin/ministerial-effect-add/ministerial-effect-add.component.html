@@ -1,5 +1,5 @@
 <div class="container">
-
+  <img src="assets/pwr-logo.png" style="width: 400px; height: 80px">
   <form #ministerialEffectAddForm="ngForm" (ngSubmit)="save()" novalidate>
 
     <div *ngIf="isFieldInvalid('profile') || isFieldInvalid('area') || isFieldInvalid('code') || isFieldInvalid('name') || isFieldInvalid('description') || isFieldInvalid('stage')"
@@ -58,7 +58,7 @@
         <textarea class="form-control" id="textareaDescription" rows="3" placeholder="Wpisz opis" required  [(ngModel)]="ministerialEffect.description" name="description"></textarea>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">Zapisz</button>
+    <button type="submit" class="btn btn-primary" style="background: #b32216 !important;">Zapisz</button>
     <a [routerLink]="['/admin/ministerialEffects']"><button class="btn btn-default">Anuluj</button></a>
   </form>
 </div>
