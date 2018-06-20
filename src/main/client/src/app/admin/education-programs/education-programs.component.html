@@ -1,0 +1,30 @@
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th class="col">Przedmiot</th>
+      <th class="col">Cykl</th>
+      <th class="col">Stopień</th>
+      <th class="col">Typ studiów</th>
+      <th class="col">Tytuł</th>
+    </tr>
+    <tr *ngFor="let educationProgram of educationPrograms">
+      <td class="col">{{ educationProgram.course }}</td>
+      <td class="col">{{ educationProgram.cycle }}</td>
+      <td class="col">{{ educationProgram.type }}</td>
+      <td class="col">{{ educationProgram.title }}</td>
+      <td class="col">
+        <a [routerLink]="['/admin/educationProgram/edit', educationProgram.id]"><button type="button" class="btn btn-sm btn-light btn-block">Edytuj</button></a>
+        <form #educationProgramDeleteForm="ngForm" (ngSubmit)="delete()" novalidate style="margin-top: 10px;">
+          <input type="hidden" name="id" [(ngModel)]="educationProgram.id" [value]="educationProgram.id">
+          <button type="submit" class="btn btn-sm btn-danger btn-block">Usuń</button>
+        </form>
+      </td>
+    </tr>
+    </thead>
+
+  </table>
+  <div class="form-group col-md-3">
+    <a [routerLink]="['/admin/educationProgram/add']"><button type="button" class="btn btn-sm btn-primary btn-block">Dodaj</button></a>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="container">
+
+  <form #educationProgramEditForm="ngForm" (ngSubmit)="save()" novalidate>
+
+    <div *ngIf="isFieldInvalid('course') || isFieldInvalid('type') || isFieldInvalid('cycle') || isFieldInvalid('title') || isFieldInvalid('degree')"
+         class="alert alert-danger">
+      <p *ngIf="isFieldInvalid('course')">Course is required.</p>
+      <p *ngIf="isFieldInvalid('type')">Type is required.</p>
+      <p *ngIf="isFieldInvalid('cycle')">Cycle is required.</p>
+      <p *ngIf="isFieldInvalid('title')">Title is required.</p>
+      <p *ngIf="isFieldInvalid('degree')">Degree is required.</p>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="course">Przedmiot</label>
+        <select id="course" class="form-control" required [(ngModel)]="educationProgram.course" name="course">
+          <option value="Bezpieczeństwo sys.web.i mob.">Bezpieczeństwo sys.web.i mob.</option>
+          <option value="Technologie wsp.wytw.oprogr.">Technologie wsp.wytw.oprogr.</option>
+          <option value="Przetwarzanie dużych zb.danych">Przetwarzanie dużych zb.danych</option>
+          <option value="Projektowanie sys. informat.">Projektowanie sys. informat.</option>
+          <option value="Inżynieria pozyskiwania i ochr">Inżynieria pozyskiwania i ochr</option>
+          <option value="Język angielski B2+">Język angielski B2+</option>
+          <option value="Podstawy biz. i ochr.wł.intel.">Podstawy biz. i ochr.wł.intel.</option>
+          <option value="Praca dyplomowa I">Praca dyplomowa I</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="type">Typ studiów</label>
+        <select id="type" class="form-control" required [(ngModel)]="educationProgram.type" name="type">
+          <option value="Stacjonarne">Stacjonarne</option>
+          <option value="Niestacjonarne">Niestacjonarne</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="cycle">Wybierz cykl</label>
+        <select id="cycle" class="form-control" required [(ngModel)]="educationProgram.cycle" name="cycle">
+          <option value="2018/2019">2018/2019</option>
+          <option value="2017/2018">2017/2018</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="title">Tytuł</label>
+        <select id="title" class="form-control" required [(ngModel)]="educationProgram.title" name="title">
+          <option value="Inżynier">Inżynier</option>
+          <option value="Licencjat">Licencjat</option>
+          <option value="Magister">Magister</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="degree">Wybierz stopień</label>
+        <select id="degree" class="form-control" required [(ngModel)]="educationProgram.degree" name="degree">
+          <option value="pierwszy">pierwszy</option>
+          <option value="drugi">drugi</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+        <a [routerLink]="['/admin/educationPrograms']"><button class="btn btn-default">Anuluj</button></a>
+      </div>
+    </div>
+
+  </form>
+</div>

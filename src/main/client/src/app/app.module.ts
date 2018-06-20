@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routing';
 import { AdminModule } from './admin/admin.module';
 import { MinisterialEffectService } from './admin/ministerial-effect.service';
+import {EducationProgramService} from "./admin/education-program.service";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MinisterialEffectService } from './admin/ministerial-effect.service';
     AdminModule
   ],
   providers: [
-    MinisterialEffectService
+    MinisterialEffectService,
+    EducationProgramService
   ],
   bootstrap: [AppComponent]
 })
